@@ -2,7 +2,7 @@
 <tool id="qualimap_bamqc" name="QualiMap BamQC" version="2.2">
     <description>Tool to to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.</description>
     <requirements>
-        <requirement type="package" version="2.2">qualimap2</requirement>
+        <requirement type="package" version="2.2">qualimap</requirement>
     </requirements>
     <stdio>
         <exit_code range=":-1" />
