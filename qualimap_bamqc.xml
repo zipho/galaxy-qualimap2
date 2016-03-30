@@ -18,7 +18,7 @@
     </command>
     <inputs>
         <param name="input_realigned_bam_file" type="data" format="bam" label="Realigned BAM dataset" help="Specify realigned BAM dataset"/>
-        <param name="mem_size" type="data" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate to the Job with default 8 Gig"/>
+        <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
         <data format="genomecov" name="genomecov_file" label="QualiMap: BamQC GenomeCov output"/>
