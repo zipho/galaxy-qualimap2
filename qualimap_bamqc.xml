@@ -14,7 +14,7 @@
             --out_genome_file ${genomecov_file}
             --out_dir ${genomecov_file.files_path}
             --out_pdf_file ${pdf_file}
-            --java-mem-size ${mem_size}
+            --java_mem_size ${mem_size}
     </command>
     <inputs>
         <param name="input_realigned_bam_file" type="data" format="bam" label="Realigned BAM dataset" help="Specify realigned BAM dataset"/>
