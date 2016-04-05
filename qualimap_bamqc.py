@@ -10,10 +10,10 @@ log = logging.getLogger(__name__)
 
 
 def qualimap_bamqc(bam_filename, genomecov_file, out_dir, jv_mem_size):
-    cmdline_str = "qualimap bamqc -bam {} -oc {} -outdir {} --outfile {} --java-mem-size={}".format(bam_filename,
-                                                                                                    genomecov_file,
-                                                                                                    out_dir,
-                                                                                                    jv_mem_size)
+    cmdline_str = "qualimap bamqc -bam {} -oc {} -outdir {} --java-mem-size={}".format(bam_filename,
+                                                                                       genomecov_file,
+                                                                                       out_dir,
+                                                                                       jv_mem_size)
     cmdline = new_split(cmdline_str)
     try:
         check_call(cmdline)
