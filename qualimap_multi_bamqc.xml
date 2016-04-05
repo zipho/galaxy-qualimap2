@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<tool id="qualimap_bamqc" name="QualiMap BamQC" version="2.2">
+<tool id="qualimap_multi_bamqc" name="QualiMap Multi BamQC" version="2.2">
     <description>Tool to to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.</description>
     <requirements>
         <requirement type="package" version="2.2">qualimap</requirement>
@@ -9,10 +9,9 @@
         <exit_code range="1:" />
     </stdio>
     <command interpreter="python">
-        qualimap_bamqc.py
+        qualimap_multi_bamqc.py
             --input_file $input_realigned_bam_file
-            --out_genome_file $genomecov_file
-            --out_dir $genomecov_file.files_path
+            --out_dir $output1.files_path
             --java_mem_size $mem_size
     </command>
     <inputs>
@@ -20,7 +19,7 @@
         <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
-        <data format="genomecov" name="genomecov_file" label="QualiMap: BamQC GenomeCov output"/>
+        <data format="pdf" name="output1" label="QualiMap: Multi BamQC PDF output"/>
     </outputs>
     <help>Help!</help>
     <citations>
