@@ -13,7 +13,6 @@
             --input_file ${input_realigned_bam_file}
             --out_genome_file ${genomecov_file}
             --out_dir ${genomecov_file.files_path}
-            --out_pdf_file ${pdf_file}
             --java_mem_size ${mem_size}
     </command>
     <inputs>
@@ -22,7 +21,6 @@
     </inputs>
     <outputs>
         <data format="genomecov" name="genomecov_file" label="QualiMap: BamQC GenomeCov output"/>
-        <data format="pdf" name="pdf_file" label="QualiMap: BamQC PDF output"/>
     </outputs>
     <help>Help!</help>
     <citations>
