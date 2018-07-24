@@ -5,4 +5,4 @@ Galaxy Qualimap 2 is a platform-independent application written in Java and R th
 ### Testing locally
 
 - `pip install planemo`
-- `planemo test --conda_auto_install --conda_dependency_resolution --conda_auto_init --test_data test-data`
+- `planemo test --conda_auto_install --conda_auto_init --conda_dependency_resolution --conda_ensure_channels bioconda  --conda_debug`
