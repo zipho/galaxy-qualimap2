@@ -1,10 +1,15 @@
 categories:
 -  Statistics
-description: Custom designed to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.
+description: Qualimap 2 is a platform-independent application written in Java and R that provides both a Graphical User Inteface (GUI) and a command-line interface to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.
 long_description: |
-   Galaxy Qualimap 2 is a platform-independent application written in Java and R that provides both a Graphical User Inteface (GUI)
-   and a command-line interface to facilitate the quality control of alignment sequencing data and its derivatives like feature counts.
-name: qualimap2
-owner: sanbi-uwc
-remote_repository_url: https://github.com/zipho/qualimap2
+   Qualimap examines sequencing alignment data in SAM/BAM files according to the features of the mapped reads and provides an overall view of the data that helps to the detect biases in the sequencing and/or mapping of the data and eases decision-making for further analysis.
+   this version of the tool aims to produce outputs that are compatible with MultiQC: https://github.com/ewels/MultiQC/blob/master/docs/modules/qualimap.md
+name: qualimap2_bamqc
+owner: refinery-platform
+remote_repository_url: https://github.com/scottx611x/qualimap2
 type: unrestricted
+exclude:
+    - README.md
+    - .travis.yml
+    - LICENSE
+    - requirements.txt
