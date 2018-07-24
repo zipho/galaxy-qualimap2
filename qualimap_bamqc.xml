@@ -11,8 +11,8 @@
     <command interpreter="python">
         qualimap_bamqc.py
             --input_file $input_realigned_bam_file
-            --out_genome_file $genomecov_file
-            --out_dir $genomecov_file.files_path
+            --out_genome_file $genome_results
+            --out_dir qualimap_results
             --java_mem_size $mem_size
     </command>
     <inputs>
@@ -20,14 +20,25 @@
         <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
-        <data format="genomecov" name="genomecov_file" label="QualiMap: BamQC GenomeCov output"/>
+        <data format="txt" name="genome_results" label="QualiMap: BamQC GenomeCov output"/>
+        <data format="html" name="qualimap_html_results">
+          <discover_datasets pattern="*.html" directory="qualimap_results"/>
+        </data>
     </outputs>
-    <help>Help!</help>
-    <citations>
-        <citation></citation>
-    </citations>
+   
     <tests>
         <test>
+          <param name="input_realigned_bam_file" value="test.bam"></param>
+          <output name="genome_results">
+            <assert_contents>
+              <has_line line="Cool" />
+            </assert_contents>
+          </output>
+          <output name="qualimap_html_results">
+            <assert_contents>
+              <has_line line="dude" />
+            </assert_contents>
+          </output>
         </test>
     </tests>
 </tool>
