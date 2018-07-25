@@ -5,7 +5,7 @@ long_description: |
    Qualimap examines sequencing alignment data in SAM/BAM files according to the features of the mapped reads and provides an overall view of the data that helps to the detect biases in the sequencing and/or mapping of the data and eases decision-making for further analysis.
    this version of the tool aims to produce outputs that are compatible with MultiQC: https://github.com/ewels/MultiQC/blob/master/docs/modules/qualimap.md
 name: qualimap2_bamqc
-owner: refinery-platform
+owner: scottx611x
 remote_repository_url: https://github.com/scottx611x/qualimap2
 type: unrestricted
 exclude:
