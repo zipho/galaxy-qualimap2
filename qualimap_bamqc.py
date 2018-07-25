@@ -30,10 +30,10 @@ def main():
     parser.add_argument('--input_file')
     parser.add_argument('--out_genome_file', default="genome_results.txt")
     parser.add_argument('--out_dir')
-    parser.add_argument('--java_mem_size', default="4G")
+    parser.add_argument('--java_mem_size', default="8G")
 
     args = parser.parse_args()
-
+    
     qualimap_bamqc(
         args.input_file,
         args.out_genome_file,
