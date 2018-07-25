@@ -36,7 +36,7 @@
           </output>
           <output name="qualimap_html_results">
             <assert_contents>
-              <has_text text="HTML File" />
+              <has_text text="HTML file" />
             </assert_contents>
           </output>
         </test>
