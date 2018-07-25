@@ -1,0 +1,18 @@
+sudo: required
+cache: pip
+language: python
+env:
+  global:
+    - secure: "WdvH7BUYYN+2psK7KUpiJKnRZsWfk7wIxLpGB25dfL+45Zj9jaNmA90QskQ60Nq8xXH/VM3vJPtfQIcfCWv1DNihWD1z8Ozrwl5ekvERR8OcQKqf708MgzINqh+lwcFpdLQir86Nt2/L0+yu57sSRldK4ZrKAfy78LaECsrSIHQ+XOvjKJ9qNaOh3t0EYZvW1H+DT7fJG+Pc7ZfrVgeyFSl0w4vhYKzvzK425H3oflOyG29h1nZdUOf6k+cDZHFJCONgw2YOHHfwkU0qfJj8q4tSCx3YMCHPGcIS7WpA46478ymLZY9G1jnDr+d+G0WXxYMx9Y8jbwJAkEh4rVXUfBvKgqB4LoxvvWPg5nypl805N1ge0lrhMNmzpFHJwIm7oumLmEhtUEBL8EPzd8rPswvzYc7Xu+hG4DPch3Imz9zEyni839I03DCh41Vkwrr+Raiy3VjY27vfgwZxBY7pQ9uKcgZO+sjE9VzEdoYAhlzwymnKUB6zx3ZlfrFh6cOfQSDXA53/90G6J+WViLHksngG5At8aUToxzoo5EHEGDVOW7rs/4cPhCmnJiOIXPWyoHW9na2mBwpVidHvkTYwPFwIjkf78so4mFasA3GZQXcouoZBZ0cM9g3MuQuM9PfJRZsTrAZ1exmFdPWLLGjb969mU+4kukzAgYgonQxsOos="
+    - secure: "qJQSGM9bRb2ifTOrZYp0m62x+dSSaxbhkMszCpSDGdYOmd8UNT/+ym/7nf6W9a/salK33md15FaubREjvAGn05hbOEafU+51mTzDTBS/jS6PWip9lAeUrDTqj8L76iGqBc38zDydr54r1aMymVVoP7i+d4ZD2nEHFepPKINitbp+GnwPAj3ysfPEnHnv2yFkNcORGamfqAVA1KK5+8lDt15w4KVmMhmzi7i7TREwdvph0r1daS1BXoYl5E7GUYpL2qGe3jEbgJkZ7XLAaYFXD6wOZ3gMGrwNSmROSlm0l0O7ub3J7aZhVRVv/dRGl8ke4GSzwEEuKJp4Zl6s3Yp9jVrbUEdZZzlls3/OY8au9X83I5TfssWN9YcIcWQ7yMcINgN0Rg/gOzRD2DvUfEkVHZy2yEpmaFOXQfXY79BLWTHlgRPyNYa/LxJqlAw15f1ZM7hXsMOF2ZqlcEWT63dqvppPbaWmOuhno5evpZIa2qh1mAH4DRAB8/wv970WOA6FS7ATDojfdt2/4uZ8xF5A7Pg+Hvsy9MbMdjZRrgSAsb6BzzfP7cFRPYXR+oFzQdCeaJsB+tqovQKX2JZ8H5+OPDK0qtq0v6EjnZiAXDqiFJ2sP2K7m1WbubVzoVAeqmcuUUYjmzqmOrKtMuyjrdQu+3kYX5xQgWQ3gPAtGZ93StQ="
+install:
+    - pip install -r requirements.txt
+script:
+    - planemo test --conda_auto_install --conda_auto_init --conda_dependency_resolution --conda_ensure_channels bioconda  --conda_debug --summary none
+after_success:
+    - planemo shed_update --check_diff --shed_target toolshed --shed_email $SHED_EMAIL --shed_password $SHED_PASSWORD
+notifications:
+    email:
+        recipients:
+            - $SHED_EMAIL
+    on_success: never
