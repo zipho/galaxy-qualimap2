@@ -28,7 +28,7 @@ def main():
         description="Generate Bam Quality Statistics"
     )
     parser.add_argument('--input_file')
-    parser.add_argument('--out_genome_file', default="genome_results.txt")
+    parser.add_argument('--out_genome_file', default="genome_coverage.txt")
     parser.add_argument('--out_dir')
     parser.add_argument('--java_mem_size', default="8G")
 

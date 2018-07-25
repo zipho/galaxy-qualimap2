@@ -11,8 +11,8 @@
     <command interpreter="python">
         qualimap_bamqc.py
             --input_file $input_realigned_bam_file
-            --out_genome_file $genome_results
             --out_dir qualimap_results
+            --out_genome_file $genome_coverage
             --java_mem_size $mem_size
     </command>
     <inputs>
@@ -23,6 +23,7 @@
         <data format="txt" name="genome_results" label="Qualimap BamQC report">
           <discover_datasets pattern="genome_results*" visible="true" ext="txt" directory="qualimap_results" assign_primary_output="true"/>
         </data>
+        <data format="txt" name="genome_coverage" label="Qualimap BamQC coverage report"></data>
         <data format="html" name="qualimap_html_results" label="Qualimap BamQC HTML report">
           <discover_datasets pattern="qualimapReport*" visible="true" ext="html" directory="qualimap_results" assign_primary_output="true"/>
         </data>
@@ -32,13 +33,18 @@
         <test>
           <param name="input_realigned_bam_file" value="test.bam"></param>
           <output name="genome_results">
-            <assert_contents>
-              <has_text text="BamQC report" />
+          	<assert_contents>
+              <has_text text="" />
+            </assert_contents>
+          </output>
+          <output name="genome_coverage">
+          	<assert_contents>
+              <has_text text="" />
             </assert_contents>
           </output>
           <output name="qualimap_html_results">
-            <assert_contents>
-              <has_text text="Qualimap report: BAM QC" />
+          	<assert_contents>
+              <has_text text="" />
             </assert_contents>
           </output>
         </test>
