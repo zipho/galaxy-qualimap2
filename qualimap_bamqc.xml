@@ -22,7 +22,7 @@
     <outputs>
         <data format="txt" name="genome_results" label="QualiMap: BamQC GenomeCov output"/>
         <data format="html" name="qualimap_html_results">
-          <discover_datasets pattern="*.html" directory="qualimap_results"/>
+          <discover_datasets ext="html" directory="qualimap_results" assign_primary_output="true"/>
         </data>
     </outputs>
    
