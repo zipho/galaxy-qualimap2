@@ -8,7 +8,7 @@ env:
 install:
     - pip install -r requirements.txt
 script:
-    - planemo test --conda_auto_install --conda_auto_init --conda_dependency_resolution --conda_ensure_channels bioconda  --conda_debug --summary none
+    - planemo test --shed_dependency_resolution
 after_success:
     - planemo shed_update --check_diff --shed_target toolshed --shed_email $SHED_EMAIL --shed_password $SHED_PASSWORD
 notifications:
