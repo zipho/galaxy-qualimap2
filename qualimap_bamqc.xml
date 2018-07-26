@@ -20,7 +20,7 @@
         <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
-        <data format="txt" name="genome_coverage" label="Qualimap BamQC coverage report"></data>
+        <data format="txt" name="genome_coverage" label="Qualimap BamQC coverage report">
           <discover_datasets pattern="genome_coverage*" visible="true" ext="txt" assign_primary_output="true"/>
         </data>
         <data format="txt" name="genome_results" label="Qualimap BamQC results">
