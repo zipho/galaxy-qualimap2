@@ -13,3 +13,5 @@ exclude:
     - .travis.yml
     - LICENSE
     - requirements.txt
+    - sample-output
+    - tool_test_output.*
