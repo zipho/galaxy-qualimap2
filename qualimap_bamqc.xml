@@ -20,10 +20,12 @@
         <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
-        <data format="txt" name="genome_results" label="Qualimap BamQC report">
+        <data format="txt" name="genome_coverage" label="Qualimap BamQC coverage report"></data>
+          <discover_datasets pattern="genome_coverage*" visible="true" ext="txt" assign_primary_output="true"/>
+        </data>
+        <data format="txt" name="genome_results" label="Qualimap BamQC results">
           <discover_datasets pattern="genome_results*" visible="true" ext="txt" directory="qualimap_results" assign_primary_output="true"/>
         </data>
-        <data format="txt" name="genome_coverage" label="Qualimap BamQC coverage report"></data>
         <data format="html" name="qualimap_html_results" label="Qualimap BamQC HTML report">
           <discover_datasets pattern="qualimapReport*" visible="true" ext="html" directory="qualimap_results" assign_primary_output="true"/>
         </data>
@@ -32,12 +34,12 @@
     <tests>
         <test>
           <param name="input_realigned_bam_file" value="test.bam"></param>
-          <output name="genome_results">
-          	<assert_contents>
+           <output name="genome_coverage">
+            <assert_contents>
               <has_text text="" />
             </assert_contents>
           </output>
-          <output name="genome_coverage">
+          <output name="genome_results">
           	<assert_contents>
               <has_text text="" />
             </assert_contents>
