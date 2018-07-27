@@ -11,8 +11,11 @@
     <command interpreter="python">
         qualimap_bamqc.py
             --input_file $input_realigned_bam_file
-            --out_genome_file $genomecov_file
-            --out_dir $genomecov_file.files_path
+            --out_dir qualimap_results
+            --out_genome_file $genome_coverage
+            --out_zip $raw_data_qualimapReport
+            --out_html $qualimapReport
+            --out_results $genome_results
             --java_mem_size $mem_size
     </command>
     <inputs>
@@ -20,14 +23,41 @@
         <param name="mem_size" type="text" value="8G" format="txt" label="Java memory size (default Gig)" help="Specify the size of memory to allocate. (Default 8 Gig)"/>
     </inputs>
     <outputs>
-        <data format="genomecov" name="genomecov_file" label="QualiMap: BamQC GenomeCov output"/>
+        <data format="txt" name="genome_coverage" label="Qualimap BamQC Coverage Report for: ${on_string}"></data>
+        <data format="txt" name="genome_results" label="Qualimap BamQC Results for: ${on_string}"></data>
+        <data format="html" name="qualimapReport" label="Qualimap BamQC HTML Report for: ${on_string}"></data>
+        <data format="zip" name="raw_data_qualimapReport" label="Qualimap Raw Data Results for: ${on_string}"></data>
     </outputs>
-    <help>Help!</help>
-    <citations>
-        <citation></citation>
-    </citations>
+   
     <tests>
         <test>
+          <param name="mem_size"  value="2G"></param>
+          <param name="input_realigned_bam_file" value="test.bam"></param>
+           <output name="genome_coverage">
+            <assert_contents>
+              <has_text text="#chr  pos coverage" />
+            </assert_contents>
+          </output>
+          <output name="genome_results">
+          	<assert_contents>
+              <has_text text="BamQC report" />
+            </assert_contents>
+          </output>
+          <output name="qualimapReport">
+          	<assert_contents>
+              <has_text text="Qualimap Report: BAM QC" />
+            </assert_contents>
+          </output>
+          <output name="qualimap_raw_data_results">
+            <assert_contents>
+              <has_text text="" />
+            </assert_contents>
+          </output>
         </test>
     </tests>
+    <help>
+        https://github.com/scottx611x/qualimap2
+    </help>
+    <citations>
+    </citations>
 </tool>

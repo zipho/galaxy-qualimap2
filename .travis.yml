@@ -1,0 +1,19 @@
+sudo: required
+cache: pip
+language: python
+env:
+  global:
+    - secure: "GmfUGW+9PPoFPRX5f2Bpdw8s46ZKukb50A5MdO6ilojuvCxlWmUzeT8Y+6TphqvPUaKlJ94lgMwiNW19wq+oUdBKqXRj0FYSEF7/kBiXggHgvRTJR+5J5kD8Kp0U95d9c5h1p521CZrufdMeGhePHkbd3BqkT/xzaHACuQhj4BoeFRYVgoDQHHsjlm6hpbNPVjSNIfZcUuQXz1D4ZkWTTGTXdMFBFRhc8utS0s9reSUxmI4z6caYtcADrgtCws47HCg+WqwIK4cG9sqv/S6VbVjx3rsA35zqD1F9dx6F/f03+wEo7draIG4i5HZ30Vl3Nt9vifxEwmJnfN9kH7AunNHH2DyrI+YZPbo6v2PaVeEO4GoKtAybL95rvyyaQ5l5UvqRStNGixzmsCCBcN5Iz9p9HuX0GmE0uksEP5hyXajnKEecChbObJKuqmXsabcYGBGmq9ERjoWlufQv+fs3PNkOj6f2Yc+6ie9bP3xGtGdsXlmXrY3xD5MFzxqD8O68Cz3u/80Qo/CM626wGbANtIXF7jsKcTZCXMPgLW/+JGlf0qOkMw5VlKXIHeoAJBz4B0hTt/T/YZlguKABymInmLto2wj4HQbHf0eupU0QEands4jtWiNAXTwuMBFjO4xwQJipBh0haam8PPIyeNuBVVa4SXXAU8eyMGQEa2U6lWo="
+    - secure: "qn/Bu7exeuqB5S9bDw9YD6dAhMIsoevf8CvnewbOkrUV+TMcBNCgWaQRuIjemN1I52uQlbbl4f0l4s9sqEEBScCRK4wrzwftVoOiHKdGYCF2avW2JXhavdV9w6IF/xtcRwAT8UyOOg0lNbs6pq3E2dxj4eZD7ueunED96ak2MxuEIKOhqgeUuFTTn9k+Ynh2uIM62eO3S0ndZe9bypjx6U1h1Dwt0+XxVolEW90XmEXx0s+UziVjmxOx4eTPNOPgFNeZx36K68Go7UjFv+phQfkmzMGK+rx9XhkxEsu/+pD2RRz3kC1ijDA3vENFbKgsrCbTHyI/034Xvepxx0CveHC7AscWBmqP7eE7Y4ZJGbDr40jp6d5PB/I8+QMd2ZzSPyhmdrJLARWVLWR8OBEVIkih/QRVO26il3tankAIEAuWA9CRHGl4siqytiC7vhOnn6oAzWJ3pCVAI/2Aja65XSjwFoqgXJNY7kywVT1YJ0B7JPGYd+a5OzNTG02cbKFbi8LlLTCy+g5mLCp+xE6M3FH65qGY9fo+aUPemsjESwxL2UsySOeAS7Leryn3WaxpJT7QdIoqsQUhPbRvAstxpiOuWczkchVY87VCWyzCCOuzl+YcIlIwVHA4wndMmp2ZAH1HlSlF9r5Ou4i8Rw9qhxCIpaCC/r44MDU/aJN1SF8="
+install:
+    - pip install -r requirements.txt
+script:
+    - planemo lint
+    - planemo test --shed_dependency_resolution
+after_success:
+    - planemo shed_update --check_diff --shed_target toolshed --shed_email $SHED_EMAIL --shed_password $SHED_PASSWORD
+notifications:
+    email:
+        recipients:
+            - $SHED_EMAIL
+    on_success: never
